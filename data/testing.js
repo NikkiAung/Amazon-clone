@@ -1,5 +1,5 @@
-const timeoutId = setTimeout(() => {
-    console.log("hello");
-}, 2000);
+import { dayjs } from 'https://unpkg.com/dayjs@1.11.10/esm/index.js';
 
-console.log(timeoutId); 
+today = dayjs();
+
+console.log(today);
