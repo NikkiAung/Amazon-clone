@@ -24,7 +24,7 @@ export function addToCart(productId){
     const quantitySelector = document.querySelector(`.js-quantity-selector-${productId}`);
 
     const quantity = Number(quantitySelector.value);
-
+    const deliveryOptionId = '1';
     if (matchingItem){
         matchingItem.quantity += quantity;
     } else {
