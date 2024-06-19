@@ -3,13 +3,31 @@ import { renderPaymentsSummary } from "./checkout/paymentSummary.js";
 import { loadProducts, loadProductsFetch } from "../data/products.js";
 import { loadCart } from "../data/cart.js";
 
-/*
-loadProducts(() => {
+
+
+async function loadPage(){
+    await loadProductsFetch();
+
+    await new Promise((resolve) => {
+        loadCart(() => {
+            resolve();
+        });
+    });
+
     renderOrderSummary();
     renderPaymentsSummary();
-});
-*/
 
+    return 'value2';
+}
+
+loadPage().then((value) => {
+    console.log('next step');
+    console.log(value);
+})
+
+
+
+/*
 Promise.all([
     loadProductsFetch(),
     new Promise((resolve) => {
@@ -22,7 +40,7 @@ Promise.all([
     renderOrderSummary();
     renderPaymentsSummary();  
 });
-
+/*
 /*
 new Promise((resolve) => {
     loadProducts(() => {
@@ -36,6 +54,13 @@ new Promise((resolve) => {
         });
     });
 }).then(() => {
+    renderOrderSummary();
+    renderPaymentsSummary();
+});
+*/
+
+/*
+loadProducts(() => {
     renderOrderSummary();
     renderPaymentsSummary();
 });
